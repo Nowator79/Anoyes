@@ -1,0 +1,23 @@
+{
+	"name": "anoyos_client",
+	"version": "1.0.0",
+	"description": "This is server",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start": "nodemon index.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"compilerOptions": {
+		"esModuleInterop": true
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.20"
+	},
+	"dependencies": {
+		"socket.io": "^4.5.3",
+		"mysql2": "^2.3.3"
+		
+	}
+}
