@@ -16,8 +16,11 @@
 		"nodemon": "^2.0.20"
 	},
 	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.18.2",
+		"lowdb": "^5.0.5",
+		"mysql2": "^2.3.3",
 		"socket.io": "^4.5.3",
-		"mysql2": "^2.3.3"
-		
+		"supervisor": "^0.12.0"
 	}
 }

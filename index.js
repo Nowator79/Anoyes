@@ -1,35 +1,27 @@
-console.clear();
-console.log("start");
 import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
 import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const port = 5004;
 
+import cors from "cors";
 import express from "express";
-const app = express();
-import http from "http";
-const server = http.createServer(app);
-
+import { createServer } from "http";
 import { Server } from "socket.io";
+const app = express();
+app.use(cors());
 
-const io = new Server(server);
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+	cors: {
+		origin: '*',
+	}
+});
 
 app.get('/', (req, res) => {
-	res.sendFile(__dirname +"/html/index.html");
+	res.sendFile(__dirname+"/html/index.html");
+});
+io.on("connection", (socket) => {
+
 });
 
-io.on('connection', (socket) => {
-	console.log('a user connected');
-	socket.on('disconnect', () => {
-		console.log('user disconnected');
-	});
-	socket.on('chat message', (msg) => {
-		io.emit('chat message', msg);
-		console.log('message: ' + msg);
-	});
-});
-
-server.listen(port, () => {
-  console.log('listening on *:'+port);
-});
+httpServer.listen(4000);
